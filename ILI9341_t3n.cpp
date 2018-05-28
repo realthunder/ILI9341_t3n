@@ -320,7 +320,9 @@ void dumpDMA_TCD(DMABaseClass *dmabc)
 //==============================================
 void	ILI9341_t3n::initDMASettings(void) 
 {
+#ifdef DEBUG_ASYNC_UPDATE
 	Serial.printf("initDMASettings called %d\n", _dma_state);
+#endif
 	if (_dma_state) {  // should test for init, but...
 		return;	// we already init this. 
 	}
@@ -505,9 +507,9 @@ bool ILI9341_t3n::updateScreenAsync(bool update_cont)					// call to say update 
 	_dmatx.TCD->SLAST = 0;	// Finish with it pointing to next location
 	_dmarx.transferCount(_dma_write_size_words);
 	_dma_count_remaining = CBALLOC/2 - _dma_write_size_words;	// how much more to transfer? 
-	Serial.printf("SPI1/2 - TC:%d TR:%d\n", _dma_write_size_words, _dma_count_remaining);
 
 #ifdef DEBUG_ASYNC_UPDATE
+	Serial.printf("SPI1/2 - TC:%d TR:%d\n", _dma_write_size_words, _dma_count_remaining);
 	dumpDMASettings();
 #endif
 
