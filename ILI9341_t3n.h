@@ -340,7 +340,7 @@ class ILI9341_t3n : public Print
 	void setFont() { font = NULL; }
 	void setFontAdafruit(void) { font = NULL; }
 	void drawFontChar(unsigned int c);
-	int16_t strPixelLen(char * str);
+	int16_t strPixelLen(const char * str);
 
 	// added support to use optional Frame buffer
 	void	setFrameBuffer(uint16_t *frame_buffer);

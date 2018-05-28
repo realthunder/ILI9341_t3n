@@ -2800,7 +2800,7 @@ void ILI9341_t3n::drawFontChar(unsigned int c)
 }
 
 //strPixelLen			- gets pixel length of given ASCII string
-int16_t ILI9341_t3n::strPixelLen(char * str)
+int16_t ILI9341_t3n::strPixelLen(const char * str)
 {
 //	//Serial.printf("strPixelLen %s\n", str);
 	if (!str) return(0);
